@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import VideoList from './components/movie_list';
+import NavBar from './components/navbar';
+
 
 const apiKey = '93d16147';
 const apiUrl = 'http://www.omdbapi.com';
@@ -38,9 +40,12 @@ class App extends Component {
 
   render(){
     return (
-      <div className="container">
-        <VideoList movies={this.state.movies} />
-      </div>
+      <React.Fragment>
+        <NavBar/>
+        <div className="container">
+          <VideoList movies={this.state.movies} />
+        </div>
+      </React.Fragment>
     );
   }
 }
