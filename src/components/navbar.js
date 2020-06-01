@@ -4,7 +4,9 @@ import NavMenu from './navbar_menu'
 
 
 
-function navBar() {
+function navBar(props) {
+    console.log(props);
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <a className="navbar-brand" href="#">Navbar</a>
@@ -14,7 +16,7 @@ function navBar() {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <NavMenu />
-                <SearchBar />
+                <SearchBar onSearchMovie={props.onSearch}/>
             </div>
         </nav>
     )

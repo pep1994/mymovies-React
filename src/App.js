@@ -22,26 +22,36 @@ class App extends Component {
       movies: [],
       totalCount: 0
     }
+
+    console.log(props);
+    
+  }
+
+  searchMovies = (val) => {
+    if (val.length < 3) {
+      return
+    } else {
+      fetchMovies(val).then(resApi => {
+        console.log(resApi);
+        this.setState({
+          movies: resApi.Search,
+          totalCount: resApi.totalResults
+          
+        })
+      })
+    }
   }
 
   
   componentDidMount() {
     
-    fetchMovies().then(resApi => {
-      console.log(resApi);
-      
-      this.setState({
-        movies: resApi.Search,
-        totalCount: resApi.totalResults
-        
-      })
-    })
+    this.searchMovies('back to the future');
   }
 
   render(){
     return (
       <React.Fragment>
-        <NavBar/>
+        <NavBar onSearch = {this.searchMovies}/>
         <div className="container">
           <VideoList movies={this.state.movies} />
         </div>
